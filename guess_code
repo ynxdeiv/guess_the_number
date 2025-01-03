@@ -1,11 +1,14 @@
+from tkinter import *
+from tkinter import ttk
 import random
 
-random_number = random.randint(1,11)
 
-while True:
-   number=int(input("One number between 1 and 10: "))
-   if number == random_number:
-      print("Congrats, you are correct")
-      break
-   else:
-      print("Oh no, incorrect answer keep trying")
+
+def calculate(number):
+    random_number=random.randint(1,11)
+    while True:
+        if number == random_number:
+            print("Congrats, you are correct")
+            break
+        else:
+            print("Oh no, incorrect answer keep trying")
