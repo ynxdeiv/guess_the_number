@@ -2,6 +2,14 @@ from tkinter import *
 from tkinter import ttk
 import random
 
+random_number=random.randint(1,10)
+def calculate():
+    user_input=number.get()
+    if  user_input== random_number:
+        print("Congrats, you are correct")
+    else:
+        print("Oh no, incorrect answer keep trying")
+
 
 root = Tk()
 root.title('Guess the number')
@@ -12,23 +20,17 @@ root.columnconfigure(0, weight=1)
 root.rowconfigure(0,weight=1)
 
 
-number = StringVar()
+number = IntVar()
 number_entry=ttk.Entry(mainframe,width=10, textvariable=number)
 number_entry.grid(column=2, row=1, sticky=(W,E))
 
-ttk.Button(mainframe, text="Try",  ).grid(column=3, row=3, sticky=W)
+ttk.Button(mainframe, text="Try", command= calculate).grid(column=3, row=3, sticky=W)
+ttk.Label(mainframe, text="Enter a number between 1 and 10").grid(column=2, row=2, sticky=W)
 
+
+for child in mainframe.winfo_children():
+    child.grid_configure(padx=5, pady=5)
+number_entry.focus()
+root.bind("<Return>", calculate)
 
 root.mainloop()
-
-
-
-
-'''def calculate(number):
-    random_number=random.randint(1,11)
-    while True:
-        if number == random_number:
-            print("Congrats, you are correct")
-            break
-        else:
-            print("Oh no, incorrect answer keep trying")'''
